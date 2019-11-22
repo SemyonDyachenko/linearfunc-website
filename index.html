@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Линейная функция (19.11.2019)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="app">
+        <header> 
+            <h1>Построение графика линейной функции</h1>
+
+           
+        </header>
+
+        <h3>Чтобы построить график функции вида - y = kx + b,<br>введите коэффициенты k и b ...</h3>
+            <br>
+            <br>
+            <br>
+     <form id="form">
+        <input type="text" id="k" name="k" placeholder="введите k">
+        <input type="text" id="b" name="b" placeholder="введите b"><br><br>
+        <input type="text" id="x1" name="x1" placeholder="введите  x1">
+        <input type="text" id="x2" name="x2" placeholder="введите  x2">
+
+
+
+        <a type="button" name="submit" id="submit" onclick="drawGraph()">Построить график</a>
+            <br>
+            <br>
+
+                </form>
+        <div id="answer">
+        
+        </div>  
+
+  
+
+        <canvas id="canvas2d" width="698" height="500"></canvas>
+
+
+    </main>
+  
+            
+    <script>
+
+ 
+
+    let posX1,posY1,posX2,posY2;
+
+
+var canvas = document.getElementById("canvas2d");
+var context = canvas.getContext("2d");
+
+
+context.fillStyle = "#e6f0d3";
+context.fillRect(0, 0, canvas.width, canvas.height);
+ 
+// Рисуем ось X красным цветом
+context.beginPath();
+context.moveTo(0, canvas.height/2);
+context.lineTo(canvas.width, canvas.height/2);
+context.strokeStyle = '#ff0000';
+context.stroke();
+ 
+// Рисуем ось Y зелёным цветом
+context.beginPath();
+context.moveTo(canvas.width/2, 0);
+context.lineTo(canvas.width/2, canvas.height);
+context.strokeStyle = '#00ff00';
+context.stroke();
+
+
+
+
+context.font = "8px Verdana";
+context.strokeStyle = "black";
+
+context.strokeText("(x:0;y:0)",canvas.width/2+5, canvas.height/2+10);
+
+
+
+function drawGraph()
+{
+
+
+  k = +document.getElementById("k").value;
+  b = +document.getElementById("b").value;
+  x1 = +document.getElementById("x1").value;
+  x2 = +document.getElementById("x2").value*10;
+
+  posY1 =(k * x1) + (b*10);
+  posY2 = (k * x2) + (b*10);
+  context.save();
+  context.translate(canvas.width / 2, canvas.height / 2);
+  context.scale(1, -1);
+
+
+  let nPosY1 = (k*(-x1)) + (b*10);
+  let nPosY2 = (k*(-x2))+ (b*10);
+
+
+
+
+  context.beginPath();
+  context.moveTo(-x1,nPosY1);
+  context.lineTo(-x2,nPosY2);
+
+
+  context.moveTo(x1, posY1);
+  context.lineTo(x2, posY2);
+
+  context.moveTo(-x1,nPosY1);
+  context.lineTo(x1,posY1);
+
+
+context.strokeStyle = '#0000ff';
+  context.stroke();
+
+  context.restore();
+
+  } 
+
+</script>
+
+
+    
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="app">
+        <header> 
+            <h1>Построение графика линейной функции</h1>
+
+           
+        </header>
+
+        <h3>Чтобы построить график функции вида - y = kx + b,<br>введите коэффициенты k и b ...</h3>
+            <br>
+            <br>
+            <br>
+     <form id="form">
+        <input type="text" id="k" name="k" placeholder="введите k">
+        <input type="text" id="b" name="b" placeholder="введите b">
+
+
+        <button type="submit" name="submit" id="submit">Построить график</button>
+            <br>
+            <br>
+        <div id="answer">
+        <h3>Чтобы построить график линейной функции,<br> которым является прямая нужно минимум две точки.<br>Для этого возмем какие нибудь 2 значения x,<br>и посчитаем координаты по y ..</h3>
+        <br>
+        <h3>1 Точка:Пусть X = 3, тогда y = k3 + b,подставим наши значения получим координату Y для первой точки.</h3><br>
+        <h3>2 Точка:Пусть X = -2, тогда y = -k2 + b,подставим наши значения получим координату Y для второй точки.</h3>
+        </div>  
+    </form>
+    <canvas id="myCanvas" width="698" height="320"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+
+        ctx.beginPath();
+    ctx.lineTo(100,25);
+    ctx.lineTo(200,65);
+    ctx.fill();
+    </script>
+
+    </main>
+
+ 
+
+</body>
+</html>
